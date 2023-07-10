@@ -42,7 +42,28 @@ const loginValidation = () => {
   ]
 }
 
+const userUpdateValidation = () => {
+  return [
+    body('name')
+      .optional()
+      .isLength({ min: 3 })
+      .withMessage('O nome precisa ter pelo menos 3 caracteres.'),
+    body('password')
+      .optional()
+      .isLength({ min: 5 })
+      .withMessage('A senha precisa ter pelo menos 5 caracteres.'),
+  ]
+}
+
+// Get current logged in user
+const getCurrentUser = async (req, res) => {
+  const user = req.user;
+  res.status(200).json(user);
+}
+
 module.exports = {
   userCreateValidation,
-  loginValidation
+  loginValidation,
+  getCurrentUser,
+  userUpdateValidation
 };

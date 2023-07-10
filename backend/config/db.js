@@ -7,9 +7,6 @@ const conn = async () => {
     const dbConn = await mongoose.connect(
       `mongodb+srv://${dbUser}:${dbPassword}@andromeda.krvrmlq.mongodb.net/?retryWrites=true&w=majority`
     );
-
-    console.log(dbConn);
-
     return dbConn;
   } catch (error) {
     console.log(error);

@@ -70,7 +70,13 @@ const login = async (req, res) => {
   });
 };
 
+// Update an user
+const update = async (req, res) => {
+  res.send("Update")
+}
+
 module.exports = {
   register,
-  login
+  login,
+  update
 };
