@@ -4,25 +4,25 @@ const userCreateValidation = () => {
   return [
     body('name')
       .isString()
-      .withMessage('Name is required')
+      .withMessage('Nome é obrigatório.')
       .isLength({ min: 3 })
-      .withMessage("Name needs to have at least 3 characters."),
+      .withMessage("Nome precisa ter pelo menos 3 caracteres."),
     body('email')
       .isString()
-      .withMessage('Email is required')
+      .withMessage('Email é obrigatório.')
       .isEmail()
-      .withMessage('Email is invalid'),
+      .withMessage('Email é inválido.'),
     body('password')
       .isString()
-      .withMessage('Password is required')
+      .withMessage('Senha é obrigatória.')
       .isLength({ min: 5 })
-      .withMessage("Password needs to have at least 5 characters."),
+      .withMessage("Senha precisa ter pelo menos 5 caracteres."),	
     body('passwordConfirmation')
       .isString()
-      .withMessage('Password confirmation is required')
+      .withMessage('Confirmar senha é obrigatório.')
       .custom((value, { req }) => {
         if (value !== req.body.password) {
-          throw new Error('Password confirmation does not match password');
+          throw new Error('As senhas não conferem.');
         }
         return true;
       })
@@ -33,12 +33,12 @@ const loginValidation = () => {
   return [
     body('email')
       .isString()
-      .withMessage('Email is required')
+      .withMessage('Email é obrigatório.')
       .isEmail()
-      .withMessage('Email is invalid'),
+      .withMessage('Email é inválido.'),
     body('password')
       .isString()
-      .withMessage('Password is required')
+      .withMessage('Senha é obrigatória.')
   ]
 }
 
