@@ -74,7 +74,7 @@ const Register = () => {
         {error && <Message type='error' msg={error} />}
       </form>
       <p>
-        Já possui uma conta?? <Link to='/login'>Clique aqui para entrar</Link>
+        Já possui uma conta?? <Link to='/login'>Clique aqui</Link>
       </p>
     </div>
   )

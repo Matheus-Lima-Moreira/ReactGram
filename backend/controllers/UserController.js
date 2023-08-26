@@ -26,7 +26,7 @@ const register = async (req, res) => {
   const user = await User.findOne({ email });
 
   if (user) {
-    return res.status(422).json({ error: 'User already exists' });
+    return res.status(422).json({ errors: ['Usuário já existe'] });
   }
 
   // Hash password
@@ -41,7 +41,7 @@ const register = async (req, res) => {
 
   // If user was created successfully, return the token
   if (!newUser) {
-    return res.status(422).json({ errors: ['User could not be created'] });
+    return res.status(422).json({ errors: ['Não foi possível criar o usuário'] });
   }
 
   res.status(201).json({
@@ -59,13 +59,13 @@ const login = async (req, res) => {
 
   // Check if user exists
   if (!user) {
-    return res.status(404).json({ error: 'User does not exist' });
+    return res.status(404).json({ errors: ['Usuário não encontrado'] });
   }
 
   // Check if password matches
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
-    return res.status(422).json({ error: 'Invalid credentials' });
+    return res.status(422).json({ errors: ['Credenciais inválidas'] });
   }
 
   res.status(201).json({
@@ -123,7 +123,7 @@ const getUserById = async (req, res) => {
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(404).json({ error: ['Usuário não encontrado'] });
+    res.status(404).json({ errors: ['Usuário não encontrado'] });
     return
   }
 }
