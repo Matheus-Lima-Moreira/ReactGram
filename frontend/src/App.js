@@ -7,6 +7,10 @@ import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
+import EditProfile from './pages/EditProfile/EditProfile';
+import Profile from './pages/Profile/Profile';
+import Photo from './pages/Photo/Photo';
+import Search from './pages/Search/Search';
 
 // Components 
 import Navbar from './components/Navbar';
@@ -14,9 +18,6 @@ import Footer from './components/Footer';
 
 // Hooks
 import { useAuth } from './hooks/useAuth';
-import EditProfile from './pages/EditProfile/EditProfile';
-import Profile from './pages/Profile/Profile';
-import Photo from './pages/Photo/Photo';
 
 function App() {
   const { auth, loading } = useAuth();
@@ -54,6 +55,11 @@ function App() {
             <Route
               path="/register"
               element={!auth ? <Register /> : <Navigate to="/" />}
+            />
+
+            <Route
+              path="/search"
+              element={auth ? <Search /> : <Navigate to="/login" />}
             />
 
             <Route
