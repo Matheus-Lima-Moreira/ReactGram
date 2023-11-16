@@ -1,4 +1,4 @@
-# Miniblog
+# ReactGram
 
 <p>This project was made using React and redux.</p>
 <p>It's a simple clone of instagram, we have a system of login and register, we also can edit your profile, publish photos, like and comment any other photos and see their respective profiles.</p>
